@@ -12,13 +12,24 @@ public class TransparentModule : MonoBehaviour
     private Material mat;
     private bool toDefault;
 
+    [Header("Модуль")]
+    public bool DebugCheck;
+    [Min(0)]
+    public float ChangeSpeed = 1;
+
     private void Start()
     {
+        changeSpeed = ChangeSpeed;
         mat = GetComponent<Renderer>().material;
         defaultAlpha = mat.color.a;
         toDefault = false;
+        if (DebugCheck)
+        {
+            Debug.Log("I'm alive!");
+        }
     }
 
+    [ContextMenu("Изменить прозрачность")]
     public void ActivateModule()
     {
         float target = toDefault ? defaultAlpha : 0;
@@ -27,6 +38,7 @@ public class TransparentModule : MonoBehaviour
         toDefault = !toDefault;
     }
 
+    [ContextMenu("Вернуть стандартную прозрачность")]
     public void ReturnToDefaultState()
     {
         toDefault = true;

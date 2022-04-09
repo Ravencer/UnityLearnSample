@@ -10,8 +10,13 @@ public class GameObjectActivator : MonoBehaviour
     private List<StateContainer> targets;
     private bool debug;
 
+    [Header("Модуль")]
+    public bool DebugCheck;
+    public List<StateContainer> Targets;
+
     private void Awake()
     {
+        targets = Targets;
         foreach (var item in targets)
         {
             item.defaultValue = item.targetGO.activeSelf;
@@ -21,6 +26,7 @@ public class GameObjectActivator : MonoBehaviour
     {
         SetStateForAll();
     }
+    [ContextMenu("Вернуть состояния")]
     public void ReturnToDefaultState()
     {
         foreach (var item in targets)
@@ -30,6 +36,7 @@ public class GameObjectActivator : MonoBehaviour
         }
     }
 
+    [ContextMenu("Изменить состояния всем")]
     private void SetStateForAll()
     {
         for (int i = 0; i < targets.Count; i++)
@@ -46,10 +53,11 @@ public class GameObjectActivator : MonoBehaviour
         }
     }
 
-    #region Материал ещё не изучен
     private void OnDrawGizmos()
     {
-        if(debug)
+        targets = Targets;
+        debug = DebugCheck;
+        if (debug)
         {
             Gizmos.color = Color.gray;
             Gizmos.DrawSphere(transform.position, 0.3f);
@@ -75,7 +83,6 @@ public class GameObjectActivator : MonoBehaviour
             }
         }
     }
-    #endregion
 }
 
 #region Материал ещё не изучен
