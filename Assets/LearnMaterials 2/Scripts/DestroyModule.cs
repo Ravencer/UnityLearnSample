@@ -7,13 +7,29 @@ public class DestroyModule : MonoBehaviour
     private float destroyDelay;
     private int minimalDestroyingObjectsCount;
 
+    [Header("Модуль")]
+    [Tooltip("Debug")]
+    public bool DebugCheck;
+    [Min(1)]
+    public int MinimalDestroying;
+    [Min(1)]
+    public float DestroyDelay;
+
+
     private Transform myTransform;
 
     private void Awake()
     {
         myTransform = transform;
+        destroyDelay = DestroyDelay;
+        minimalDestroyingObjectsCount = MinimalDestroying;
+        if (DebugCheck){
+            Debug.Log("I am alive!");
+        }
+        
     }
 
+    [ContextMenu("Начать разрушение")]
     public void ActivateModule()
     {
         StartCoroutine(DestroyRandomChildObjectCoroutine());
