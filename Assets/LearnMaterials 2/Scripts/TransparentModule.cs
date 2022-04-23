@@ -6,30 +6,25 @@ using UnityEngine;
 [HelpURL("https://docs.google.com/document/d/1Cmm__cbik5J8aHAI6PPaAUmEMF3wAcNo3rpgzsYPzDM/edit?usp=sharing")]
 public class TransparentModule : MonoBehaviour
 {
-    private float changeSpeed;
-
+    [Min(1)]
+    [SerializeField]
+       private float changeSpeed;
+    
     private float defaultAlpha;
     private Material mat;
     private bool toDefault;
-
-    [Header("Модуль")]
-    public bool DebugCheck;
-    [Min(0)]
-    public float ChangeSpeed = 1;
+  
 
     private void Start()
     {
-        changeSpeed = ChangeSpeed;
+        
         mat = GetComponent<Renderer>().material;
         defaultAlpha = mat.color.a;
         toDefault = false;
-        if (DebugCheck)
-        {
-            Debug.Log("I'm alive!");
-        }
+        
     }
 
-    [ContextMenu("Изменить прозрачность")]
+    [ContextMenu("Start transperating")]
     public void ActivateModule()
     {
         float target = toDefault ? defaultAlpha : 0;
@@ -38,7 +33,7 @@ public class TransparentModule : MonoBehaviour
         toDefault = !toDefault;
     }
 
-    [ContextMenu("Вернуть стандартную прозрачность")]
+    [ContextMenu("Reset transperating")]
     public void ReturnToDefaultState()
     {
         toDefault = true;
