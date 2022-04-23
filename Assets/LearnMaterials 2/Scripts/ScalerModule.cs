@@ -12,7 +12,12 @@ public class ScalerModule : MonoBehaviour
     private Transform myTransform;
     private bool toDefault;
 
-    
+    [Header("Module")]
+    public bool DebugCheck = false;
+    public Vector3 TargetScale = new Vector3(0,0,0);
+    [Min(1)]
+    [SerializeField]
+    public float ChangeSpeed = 1;
 
     private void Start()
     {
@@ -21,7 +26,7 @@ public class ScalerModule : MonoBehaviour
         toDefault = false;
     }
 
-    [ContextMenu("Начать увеличение")]
+    [ContextMenu("Start increase")]
     public void ActivateModule()
     {
         Vector3 target = toDefault ? defaultScale : targetScale;
