@@ -12,23 +12,13 @@ public class ScalerModule : MonoBehaviour
     private Transform myTransform;
     private bool toDefault;
 
-    [Header("Модуль")]
-    public bool DebugCheck = false;
-    public Vector3 TargetScale = new Vector3(0,0,0);
-    [Min(1)]
-    public float ChangeSpeed = 1;
+    
 
     private void Start()
     {
         myTransform = transform;
         defaultScale = myTransform.localScale;
-        targetScale = TargetScale;
-        changeSpeed = ChangeSpeed;
         toDefault = false;
-        if (DebugCheck)
-        {
-            Debug.Log("I'm alive!");
-        }
     }
 
     [ContextMenu("Начать увеличение")]

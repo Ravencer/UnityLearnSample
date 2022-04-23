@@ -8,20 +8,21 @@ public class TransparentModule : MonoBehaviour
 {
     [Min(1)]
     [SerializeField]
-       private float changeSpeed;
-    
+    private float changeSpeed;
+
     private float defaultAlpha;
     private Material mat;
     private bool toDefault;
   
 
+
     private void Start()
     {
-        
+
         mat = GetComponent<Renderer>().material;
         defaultAlpha = mat.color.a;
         toDefault = false;
-        
+
     }
 
     [ContextMenu("Start transperating")]
