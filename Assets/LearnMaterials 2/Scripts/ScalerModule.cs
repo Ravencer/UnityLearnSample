@@ -23,13 +23,7 @@ public class ScalerModule : MonoBehaviour
     {
         myTransform = transform;
         defaultScale = myTransform.localScale;
-        targetScale = TargetScale;
-        changeSpeed = ChangeSpeed;
         toDefault = false;
-        if (DebugCheck)
-        {
-            Debug.Log("I'm alive!");
-        }
     }
 
     [ContextMenu("Start increase")]

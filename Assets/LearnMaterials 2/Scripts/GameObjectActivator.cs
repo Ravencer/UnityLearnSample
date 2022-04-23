@@ -7,16 +7,18 @@ using UnityEngine;
 [HelpURL("https://docs.google.com/document/d/1GP4_m0MzOF8L5t5pZxLChu3V_TFIq1czi1oJQ2X5kpU/edit?usp=sharing")]
 public class GameObjectActivator : MonoBehaviour
 {
-    private List<StateContainer> targets;
-    private bool debug;
 
     [Header("Модуль")]
-    public bool DebugCheck;
-    public List<StateContainer> Targets;
+    [SerializeField]
+    private List<StateContainer> targets;
+    [SerializeField]
+    private bool debug;
+
+    
 
     private void Awake()
     {
-        targets = Targets;
+       
         foreach (var item in targets)
         {
             item.defaultValue = item.targetGO.activeSelf;
@@ -55,8 +57,7 @@ public class GameObjectActivator : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        targets = Targets;
-        debug = DebugCheck;
+       
         if (debug)
         {
             Gizmos.color = Color.gray;
