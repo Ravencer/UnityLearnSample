@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Object
+  - InteractivePlane
   layers:
   - Default
   - TransparentFX
